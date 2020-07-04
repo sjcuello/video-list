@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect}from 'react';
 import { connect } from 'react-redux';
+import useInitialState from '../hooks/useInitialState';
+import { setAllVideosNew } from '../actions/index';
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid,Container, Typography} from '@material-ui/core/';
+import { Grid, Container, Typography } from '@material-ui/core/';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,38 +43,57 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Home = () => {
+const API = "https://api.jsonbin.io/b/5ef409df2406353b2e0c4068";
 
+const Home = (props) => {
+  //const {videos} = props;
   const classes = useStyles();
 
+  const videos = useInitialState(API);
+
+  useEffect(()=>{
+    props.setAllVideosNew(videos);
+  });
+
+  //console.log('videosss: ', videos);
   return (
     <main>
       <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" >
-              DV Visual Control App
+        <Container maxWidth="sm">
+          <Typography component="h1" variant="h2" align="center" color="textPrimary" >
+            DV Visual Control App
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Listado de videos
+          <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            Listado de videos
             </Typography>
-          </Container>
-        </div>
+        </Container>
+      </div>
+
       <Grid container>
-        
-        <Grid item xs={4} className={classes.border}>
-            uno
-        </Grid>
-        <Grid item xs={4} className={classes.border}>
-            dos
-        </Grid>
-        <Grid item xs={4} className={classes.border}>
-            tres
-        </Grid>
+        {videos.map(video =>
+          //console.log('video:', video)
+          <Grid item xs={4} key={video.id} className={classes.border}>
+            item
+          </Grid>
+        )}
       </Grid>
+
+
     </main>
   )
 }
 
+const mapStateToProps = state => {
+  //console.log('state: ',state);
+  //console.log('state.videos: ',state.videos);
+  return {
+    videos: state.videos,
+  };
+};
 
 
-export default connect(null, null)(Home);
+const mapDispachToProps = {
+  setAllVideosNew,
+}
+
+export default connect(mapStateToProps, mapDispachToProps)(Home);
