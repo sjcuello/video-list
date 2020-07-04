@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getVideoSource } from '../actions';
-//import '../assets/styles';
-import Container from '@material-ui/core/Container';
+import '../assets/styles/index.css';
+import {Container,Typography, Box} from '@material-ui/core';
 import NotFound from './NotFound';
 
 const DiplayComponent = (props) => {
@@ -19,10 +19,15 @@ const DiplayComponent = (props) => {
   return hasPlaying ? (
     <main>
       <Container maxWidth="sm">
-        <video controls ali>
+        <Typography variant="h5" align="left" color="textSecondary" paragraph>
+          titulo del video
+          </Typography>
+      </Container>
+      <Box maxWidth="lg" display="flex" justifyContent="center">
+        <video controls>
           <source src={props.playing.sources} type="video/mp4" />
         </video>
-      </Container>
+      </Box>
     </main>
 
   ) : <NotFound />;
