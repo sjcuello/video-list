@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Container,Typography, Box} from '@material-ui/core';
 import NotFound from './NotFound';
 import Grid from '@material-ui/core/Grid';
+import ControlsComponent from './ControlsComponent';
+
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -53,8 +55,9 @@ const DiplayComponent = (props) => {
           </Typography>
         </Grid>
       </Grid>
+      <ControlsComponent/>
     </main>
-
+    
   ) : <NotFound />;
 }
 
