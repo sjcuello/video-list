@@ -1,14 +1,14 @@
 import React from 'react';
-import Header from '../components/Header';
+import TopBar from '../components/TopBar';
 import Footer from '../components/Footer';
 
 
 const Layout = ({children}) => (
-  <div className="App">
-    <Header />
+  <>
+    <TopBar />
       {children}
     <Footer />
-  </div>
+  </>
 );
 
 export default Layout;

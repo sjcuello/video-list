@@ -9,11 +9,14 @@
 .section {
   width: 50%;
   height: 100%;
-  background-color: red;
 }
 
 video {
   width: 70%;
   height: 70%;
 
+}
+
+body {
+  margin: 0;
 }
