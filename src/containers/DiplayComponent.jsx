@@ -5,6 +5,7 @@ import '../assets/styles/index.css';
 import { makeStyles } from '@material-ui/core/styles';
 import {Container,Typography, Box} from '@material-ui/core';
 import NotFound from './NotFound';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -15,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
   description:{
     marginTop: '1%',
     alignItems: 'left',
+    paddingRight: '10%',
+    marginRight: '10%',
   }
 }));
 
@@ -38,16 +41,18 @@ const DiplayComponent = (props) => {
           {props.playing.title}
         </Typography>
       </Container>
-      <Box maxWidth="lg" display="flex" justifyContent="center">
-        <video controls>
-          <source src={props.playing.sources} type="video/mp4" />
-        </video>
-      </Box>
-      <Container maxWidth="md" fixed className={classes.description}>
-        <Typography variant="h6" align="left" color="textSecondary" paragraph >
-          {props.playing.description}
-        </Typography>
-      </Container>
+      <Grid container spacing={3}>
+        <Grid item key='video' xs={10}>
+          <video controls>
+            <source src={props.playing.sources} type="video/mp4" />
+          </video>
+        </Grid>
+        <Grid item key='description' xs={2}>
+          <Typography variant="h6" align="left" color="textSecondary" className={classes.description} paragraph >
+            {props.playing.description}
+          </Typography>
+        </Grid>
+      </Grid>
     </main>
 
   ) : <NotFound />;

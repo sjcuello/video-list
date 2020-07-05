@@ -12,9 +12,9 @@
 }
 
 video {
-  width: 70%;
-  height: 70%;
-
+  width: 90%;
+  height: auto;
+  margin-left: 5%;
 }
 
 body {
