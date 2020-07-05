@@ -29,8 +29,6 @@ const DiplayComponent = (props) => {
 
   const hasPlaying = Object.keys(props.playing).length > 0;
 
-  console.log('props.playing: ',props.playing);
-
   useEffect(() => {
     props.getVideoSource(id);
   }, []);
