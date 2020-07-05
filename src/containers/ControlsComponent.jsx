@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -26,7 +26,11 @@ function ControlsComponent(props) {
 
   const classes = useStyles();
 
-  let video = document.getElementsByTagName('video')[0];
+  let video;
+
+  useEffect(()=>{
+    video = document.getElementsByTagName('video')[0];
+  })
 
   const [valuevolume, setValueVolume] = useState(30);
   const [valuebrightness, setValueBrightness] = useState(100);
@@ -50,7 +54,7 @@ function ControlsComponent(props) {
 
   const handlePause = () => video.pause();
 
-
+  
   return (
     <BottomNavigation className={classes.root}>
       <BottomNavigationAction
