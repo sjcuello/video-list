@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getVideoSource } from '../actions';
+import { getVideoSource,getAllRecommended } from '../actions';
 import '../assets/styles/index.css';
 import { makeStyles } from '@material-ui/core/styles';
-import {Container,Typography, Box} from '@material-ui/core';
+import {Container,Typography} from '@material-ui/core';
 import NotFound from './NotFound';
 import Grid from '@material-ui/core/Grid';
 import ControlsComponent from './ControlsComponent';
-
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -31,6 +30,7 @@ const DiplayComponent = (props) => {
 
   useEffect(() => {
     props.getVideoSource(id);
+    props.getAllRecommended(id);
   }, []);
 
   const classes = useStyles();
@@ -43,7 +43,7 @@ const DiplayComponent = (props) => {
       </Container>
       <Grid container spacing={3}>
         <Grid item key='video' xs={10}>
-          <video controls>
+          <video>
             <source src={props.playing.sources} type="video/mp4" />
           </video>
         </Grid>
@@ -53,22 +53,22 @@ const DiplayComponent = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <ControlsComponent/>
+      <ControlsComponent recommended={props.recommended}/>
     </main>
     
   ) : <NotFound />;
 }
 
-// Se usa para buscar el item por el id
 const mapStateToProps = state => {
   return {
     playing: state.playing,
+    recommended: state.recommended,
   };
 };
 
-//Se usa para recuperar el valor de redux
 const mapDispachToProps = {
   getVideoSource,
+  getAllRecommended,
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(DiplayComponent); 

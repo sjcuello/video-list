@@ -9,6 +9,7 @@ import Brightness6Icon from '@material-ui/icons/Brightness6';//brigthness
 import Brightness2Icon from '@material-ui/icons/Brightness2';//contrast
 import VolumeDownIcon from '@material-ui/icons/VolumeDown';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Recommended from '../components/Recommended';
 
 const useStyles = makeStyles({
   root: {
@@ -18,14 +19,16 @@ const useStyles = makeStyles({
   },
   slider: {
     paddingTop: '1%',
-    width: '60%'
-  }
+    width: '60%',
+  },
 });
 
-function ControlsComponent(props) {
+function ControlsComponent({recommended}) {
+  
+  console.log('recommended: ',recommended);
 
   const classes = useStyles();
-
+  
   let video;
 
   useEffect(()=>{
@@ -35,6 +38,8 @@ function ControlsComponent(props) {
   const [valuevolume, setValueVolume] = useState(30);
   const [valuebrightness, setValueBrightness] = useState(100);
   const [valuecontrast, setValueContrast] = useState(100);
+
+  const [checked, setChecked] = useState(false);
 
   const handleChangeVolume = (event, newValue) => {
     setValueVolume(newValue);
@@ -54,8 +59,20 @@ function ControlsComponent(props) {
 
   const handlePause = () => video.pause();
 
+  const showHideRecommended = ()=>{
+    setChecked(!checked);
+    if(!checked){
+      console.log('por aca');
+      //window.scrollTo(0,document.body.scrollHeight);
+      window.scrollTo(0, 999999);
+    }else{
+      window.scrollTo(0,document.body.scrollTop);
+    }
+    
+  }
   
   return (
+    <>
     <BottomNavigation className={classes.root}>
       <BottomNavigationAction
         label="PlayArrow"
@@ -111,9 +128,17 @@ function ControlsComponent(props) {
           }}
         />
       </div>
-      <BottomNavigationAction label="ExpandMore" value="expand-more" icon={<ExpandMoreIcon />} />
-
+      <BottomNavigationAction 
+        label="ExpandMore" 
+        value="expand-more" 
+        icon={<ExpandMoreIcon />} 
+        onClick={() => showHideRecommended()}
+      />
     </BottomNavigation>
+    {checked ?
+      <Recommended recommended={recommended} />
+    : null}
+    </>
   );
 }
 

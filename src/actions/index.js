@@ -7,3 +7,8 @@ export const setAllVideos = payload => ({
   type: 'SET_ALL_VIDEOS',
   payload,
 });
+
+export const getAllRecommended = payload => ({
+  type: 'GER_ALL_RECOMMENDED',
+  payload,
+});

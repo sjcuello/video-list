@@ -41,13 +41,11 @@ const Home = (props) => {
 
       <Grid container spacing={6}>
         {videos.map(video =>
-          //console.log('video:', video)
           <Grid item xs={12} sm={6} md={3} key={video.id} className={classes.border}>
             <CardItem {...video}/>
           </Grid>
         )}
       </Grid>
-
 
     </main>
   )

@@ -11,6 +11,11 @@ const reducer = (state, action) =>{
         ...state,
         videos: action.payload || []
       }
+    case 'GER_ALL_RECOMMENDED':
+      return {
+        ...state,
+        recommended: state.videos.filter(item => item.id !== Number(action.payload)) || []
+      }
     default:
       return state;
   }
