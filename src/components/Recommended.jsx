@@ -39,19 +39,21 @@ const Recommended = (props) => {
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
         {props.recommended.map(video => (
-          <Link to={`/video/${video.id}`} style={{ textDecoration: 'inherit', color: 'inherit' }}>
+        
             <GridListTile key={video.id} >
               <img src={video.thumb} alt={video.title} />
               <GridListTileBar
                 title={video.title}
                 actionIcon={
-                  <IconButton aria-label={`info about ${video.title}`} className={classes.icon}>
-                    <PlayArrowIcon />
-                  </IconButton>
+                  <Link to={`/video/${video.id}`} style={{ textDecoration: 'inherit', color: 'inherit' }}>  
+                    <IconButton aria-label={`info about ${video.title}`} className={classes.icon}>
+                      <PlayArrowIcon />
+                    </IconButton>
+                  </Link>
                 }
               />
             </GridListTile>
-          </Link>
+
         ))}
       </GridList>
     </div>

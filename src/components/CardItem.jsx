@@ -45,14 +45,7 @@ const CardItem = (props) => {
         </Typography>
       </CardContent>
       
-      <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-              <PlayArrow />
-          </IconButton>
-          <IconButton aria-label="share">
-              <PlaylistAdd />
-          </IconButton>
-      </CardActions>
+      
     </Card>
    
   );

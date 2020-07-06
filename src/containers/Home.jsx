@@ -27,13 +27,13 @@ const Home = (props) => {
   return (
     <main>
       <div className={classes.heroContent}>
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" className={classes.heroContent}>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" >
-            DV Visual Control App
-            </Typography>
+            VIDEO LIST
+          </Typography>
           <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Listado de videos
-            </Typography>
+            Challenge DV
+          </Typography>
         </Container>
       </div>
 
