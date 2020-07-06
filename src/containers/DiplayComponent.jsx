@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const DiplayComponent = (props) => {
 
   const { id } = props.match.params;
-
+  console.log('props: ',props);
   const hasPlaying = Object.keys(props.playing).length > 0;
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const DiplayComponent = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <ControlsComponent recommended={props.recommended}/>
+      <ControlsComponent recommended={props.recommended} {...props}/>
     </main>
     
   ) : <NotFound />;

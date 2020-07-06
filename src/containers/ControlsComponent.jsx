@@ -23,9 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ControlsComponent({recommended}) {
-  
-  console.log('recommended: ',recommended);
+function ControlsComponent(props) {
 
   const classes = useStyles();
   
@@ -62,9 +60,7 @@ function ControlsComponent({recommended}) {
   const showHideRecommended = ()=>{
     setChecked(!checked);
     if(!checked){
-      console.log('por aca');
-      //window.scrollTo(0,document.body.scrollHeight);
-      window.scrollTo(0, 999999);
+      window.scrollTo(0,document.body.scrollHeight);
     }else{
       window.scrollTo(0,document.body.scrollTop);
     }
@@ -94,10 +90,6 @@ function ControlsComponent({recommended}) {
           min={0}
           max={100}
           onChange={handleChangeVolume}
-          onChangeCommitted={(e, val) => {
-            console.log(val);
-            return val;
-          }}
         />
       </div>
       <BottomNavigationAction label="Brightness" value="brightness" icon={<Brightness6Icon />} />
@@ -108,10 +100,6 @@ function ControlsComponent({recommended}) {
           min={0}
           max={200}
           onChange={handleChangeBrightness}
-          onChangeCommitted={(e, val) => {
-            console.log(val);
-            return val;
-          }}
         />
       </div>
       <BottomNavigationAction label="Contrast" value="contrast" icon={<Brightness2Icon />} />
@@ -122,10 +110,6 @@ function ControlsComponent({recommended}) {
           min={0}
           max={200}
           onChange={handleChangeContrast}
-          onChangeCommitted={(e, val) => {
-            console.log(val);
-            return val;
-          }}
         />
       </div>
       <BottomNavigationAction 
@@ -136,7 +120,7 @@ function ControlsComponent({recommended}) {
       />
     </BottomNavigation>
     {checked ?
-      <Recommended recommended={recommended} />
+      <Recommended recommended={props.recommended} {...props}/>
     : null}
     </>
   );

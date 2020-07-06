@@ -24,25 +24,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Recommended = ({recommended}) => {
-
+const Recommended = (props) => {
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
-        {recommended.map(video => (
-          <GridListTile key={video.id}>
-            <img src={video.thumb} alt={video.title} />
-            <GridListTileBar
-              title={video.title}
-              actionIcon={
-                <IconButton aria-label={`info about ${video.title}`} className={classes.icon}>
-                  <PlayArrowIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
+        {props.recommended.map(video => (
+          <Link to={`/video/${video.id}`} style={{ textDecoration: 'inherit', color: 'inherit'}}>
+            <GridListTile key={video.id} >
+              <img src={video.thumb} alt={video.title} />
+              <GridListTileBar
+                title={video.title}
+                actionIcon={
+                  <IconButton aria-label={`info about ${video.title}`} className={classes.icon}>
+                    <PlayArrowIcon />
+                  </IconButton>
+                }
+              />
+            </GridListTile>
+        </Link>
+          
         ))}
       </GridList>
     </div>

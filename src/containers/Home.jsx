@@ -25,7 +25,6 @@ const Home = (props) => {
     props.setAllVideos(videos);
   });
 
-  //console.log('videosss: ', videos);
   return (
     <main>
       <div className={classes.heroContent}>
