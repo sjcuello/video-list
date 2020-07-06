@@ -120,7 +120,7 @@ function ControlsComponent(props) {
       />
     </BottomNavigation>
     {checked ?
-      <Recommended recommended={props.recommended} {...props}/>
+      <Recommended {...props}/>
     : null}
     </>
   );

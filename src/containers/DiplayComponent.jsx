@@ -25,50 +25,49 @@ const useStyles = makeStyles((theme) => ({
 const DiplayComponent = (props) => {
 
   const { id } = props.match.params;
-  console.log('props: ',props);
+ 
   const hasPlaying = Object.keys(props.playing).length > 0;
 
   useEffect(() => {
     props.getVideoSource(id);
-    props.getAllRecommended(id);
-  }, []);
+  }, [props.match.params]);
 
   const classes = useStyles();
+  const {title, sources, description} = props.playing
+  console.log({title, sources, description})
   return hasPlaying ? (
     <main>
       <Container maxWidth="md" fixed className={classes.title}>
         <Typography variant="h4" align="center" color="textPrimary" >
-          {props.playing.title}
+          {title}
         </Typography>
       </Container>
       <Grid container spacing={3}>
         <Grid item key='video' xs={10}>
-          <video>
-            <source src={props.playing.sources} type="video/mp4" />
+          <video key={sources}>
+            <source src={sources} type="video/mp4" />
           </video>
         </Grid>
         <Grid item key='description' xs={2}>
           <Typography variant="h6" align="left" color="textSecondary" className={classes.description} paragraph >
-            {props.playing.description}
+            {description}
           </Typography>
         </Grid>
       </Grid>
-      <ControlsComponent recommended={props.recommended} {...props}/>
+      <ControlsComponent {...props}/>
     </main>
     
   ) : <NotFound />;
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({playing}) => {
   return {
-    playing: state.playing,
-    recommended: state.recommended,
+    playing
   };
 };
 
 const mapDispachToProps = {
   getVideoSource,
-  getAllRecommended,
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(DiplayComponent); 

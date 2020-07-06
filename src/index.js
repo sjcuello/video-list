@@ -16,7 +16,7 @@ let initialState = {
   videos: [],
 };
 
-const store = createStore(reducer, initialState, composeEnhancers());
+const store = createStore(reducer, initialState, composeEnhancers() );
 
 ReactDOM.render(
   <Provider store={store}>

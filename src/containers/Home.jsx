@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 const API = "https://api.jsonbin.io/b/5ef409df2406353b2e0c4068";
 
 const Home = (props) => {
-  //const {videos} = props;
   const classes = useStyles();
 
   const videos = useInitialState(API);

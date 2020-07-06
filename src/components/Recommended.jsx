@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../assets/styles/index.css';
+import { getAllRecommended } from '../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import {GridList, GridListTile, GridListTileBar, IconButton} from '@material-ui/core';
@@ -24,14 +25,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const Recommended = (props) => {
+
+  useEffect(() => {
+    props.getAllRecommended();
+  }, []);
+
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
         {props.recommended.map(video => (
-          <Link to={`/video/${video.id}`} style={{ textDecoration: 'inherit', color: 'inherit'}}>
+          <Link to={`/video/${video.id}`} style={{ textDecoration: 'inherit', color: 'inherit' }}>
             <GridListTile key={video.id} >
               <img src={video.thumb} alt={video.title} />
               <GridListTileBar
@@ -43,13 +51,19 @@ const Recommended = (props) => {
                 }
               />
             </GridListTile>
-        </Link>
-          
+          </Link>
         ))}
       </GridList>
     </div>
   );
 }
 
+const mapStateToProps = (state) => ({
+  recommended: state.recommended
+})  
 
-export default connect(null,null)(Recommended); 
+const mapDispachToProps = {
+  getAllRecommended,
+}
+
+export default connect(mapStateToProps,mapDispachToProps)(Recommended); 
