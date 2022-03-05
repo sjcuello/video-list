@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-const URL = "https://github.com/sjcuello/DV-Visual-Control-App";
+const URL = "https://github.com/sjcuello/video-list";
 
 const Footer = () => {
   const classes = useStyles();

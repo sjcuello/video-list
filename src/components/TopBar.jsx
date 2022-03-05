@@ -26,7 +26,7 @@ function TopBar() {
         <Link to="/" style={{ textDecoration: 'inherit', color: 'inherit'}}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              DV Visual Control App
+              Video List
             </Typography>
           </Toolbar>
         </Link>

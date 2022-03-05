@@ -32,7 +32,7 @@ const Home = (props) => {
             VIDEO LIST
           </Typography>
           <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Challenge DV
+            Just a simple list of videos
           </Typography>
         </Container>
       </div>

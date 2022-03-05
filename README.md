@@ -1,10 +1,35 @@
-## Installation
+## How to install it?
+___
 
-In the project directory, you can run:
+```
+git clone https://github.com/sjcuello/video-list.git
+cd video-list
+yarn install
+```
 
-### `npm install`
-### `npm run build`
-### `npm start`
+## How to run it ?
+___
 
-Runs the app in the development mode.<br />
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
++ Excecute the following command from `~/video-list`:
+```
+yarn start
+```
++ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+
+## Technologies and project highlights
+___
+
++ ReactJS
++ Material-UI
++ Redux
++ Webpack
+
+## Links
+___
+
+[LinkedIn](https://www.linkedin.com/in/sjcuello/)
+
+[GitHub](https://github.com/sjcuello/)
+
+[Twitter](https://twitter.com/sjcuello)
+
